@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route("/<product_name>")
 def hello(product_name):
-    prompt = f"Research about {product_name}"
+    prompt = f"Populate Market Research about {product_name}"
     print(prompt)
     response = openai.Completion.create(
         engine="text-davinci-003",  # Choose the appropriate engine for your needs

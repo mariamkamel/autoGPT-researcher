@@ -3,26 +3,9 @@
 # app = FastAPI()
 
 import openai
+import os
 
-openai.api_key = "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"  # Replace with your OpenAI API key
-
-
-# @app.get("/get-product-research")
-# def hello(product_name: str):
-#     prompt = f"Research about {product_name}"
-
-#     response = openai.Completion.create(
-#         engine="text-davinci-003",  # Choose the appropriate engine for your needs
-#         prompt=prompt,
-#         max_tokens=500,  # Set the desired length of the research
-#         n=1,
-#         stop=None,
-#         temperature=0.8,  # Adjust the temperature for more or less randomness
-#     )
-
-#     research = response.choices[0].text.strip()
-
-#     return {"data": research}, 200
+openai.api_key = os.environ.get("OPENAIAPI")  # Replace with your OpenAI API key
 
 from flask import Flask
 
@@ -45,7 +28,3 @@ def hello(product_name):
     research = response.choices[0].text.strip()
 
     return {"data": research}, 200
-
-
-if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8080, debug=True)
